@@ -19,6 +19,7 @@ RUN apt-get update \
         mbstring \
         pdo_mysql \
 	zip \
+	bcmath \
     && docker-php-ext-enable mcrypt \
     && pecl install redis-5.1.1 \
     && docker-php-ext-enable redis
