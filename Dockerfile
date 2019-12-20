@@ -13,6 +13,7 @@ RUN apt-get update \
         mbstring \
         pdo_mysql \
 		zip \
+	sodium gd \
 	&& docker-php-ext-enable mcrypt \	
 
     && apt-get clean \
