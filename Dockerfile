@@ -11,7 +11,7 @@ RUN apt-get update \
         git \
         wget \
 	supervisor \
-	&& pecl install mcrypt-1.0.2 \
+	&& pecl install mcrypt-1.0.3 \
     && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
@@ -19,13 +19,15 @@ RUN apt-get update \
         mbstring \
         pdo_mysql \
 	zip \
-    && docker-php-ext-enable mcrypt \	
+    && docker-php-ext-enable mcrypt \
+    && pecl install redis-5.1.1 \
+    && docker-php-ext-enable redis \
 
-    && apt-get clean \
+RUN apt-get clean \
     && apt-get autoclean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-    && curl -sS https://getcomposer.org/installer \
+RUN curl -sS https://getcomposer.org/installer \
         | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN a2enmod rewrite
