@@ -11,7 +11,7 @@ RUN apt-get update \
         git \
         wget \
 	supervisor \
-	&& pecl install mcrypt-1.0.3 \
+    && pecl install mcrypt-1.0.3 \
     && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
@@ -21,7 +21,7 @@ RUN apt-get update \
 	zip \
     && docker-php-ext-enable mcrypt \
     && pecl install redis-5.1.1 \
-    && docker-php-ext-enable redis \
+    && docker-php-ext-enable redis
 
 RUN apt-get clean \
     && apt-get autoclean \
