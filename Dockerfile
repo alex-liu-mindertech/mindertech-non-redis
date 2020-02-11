@@ -20,9 +20,7 @@ RUN apt-get update \
         pdo_mysql \
 	zip \
 	bcmath \
-    && docker-php-ext-enable mcrypt \
-    && pecl install redis-5.1.1 \
-    && docker-php-ext-enable redis
+    && docker-php-ext-enable mcrypt
 
 RUN apt-get clean \
     && apt-get autoclean \
