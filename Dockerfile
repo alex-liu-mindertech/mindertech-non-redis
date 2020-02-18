@@ -29,4 +29,4 @@ RUN apt-get clean \
 RUN curl -sS https://getcomposer.org/installer \
         | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN a2enmod rewrite
+RUN a2enmod rewrite proxy proxy_connect
